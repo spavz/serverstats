@@ -15,6 +15,8 @@ app_name = 'servers'
 """
 urlpatterns = [
     url(r'^query/$', initial_query, name='query'),
-    url(r'^success/$', get_question, name='success'),
+    url(r'^add/$', initial_add, name='add'),
+    url(r'^add/success/$', add_servers, name='add'),
+    url(r'^success/$', get_servers, name='success'),
     url(r'^thanks/$', thanks, name='thanks'),
 ]

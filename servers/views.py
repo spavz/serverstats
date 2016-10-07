@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.views import generic
 
 from .models import Server
-from .forms import ServerForm
+from .forms import ServerForm, AddServerForm
 
 """
 class IndexView(generic.ListView):
@@ -39,10 +39,12 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 """
+
+
 def initial_query(request):
     form = ServerForm()
     context = {'form': form}
-    return render(request, 'servers/docs/examples/navbar-top-fixed/query.html', context)
+    return render(request, 'servers/query.html', context)
 
 
 def thanks(request):
@@ -50,20 +52,60 @@ def thanks(request):
 
 
 
-def get_question(request):
+def get_servers(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = QuestionForm(request.POST)
+        form = ServerForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
-            # ...
+            name = form.cleaned_data['name']
+            game = form.cleaned_data['game']
+            location = form.cleaned_data['location']
+            IP = form.cleaned_data['IP']
+
+            if(name=="" and game == "0" and location == "0" and IP =="" ):
+                S=Server.objects.all()
+            else:
+                S=Server.objects.filter(game=game,location=location)
             # redirect to a new URL:
-            return HttpResponseRedirect('/polls/thanks/')
+            return render(request, 'servers/docs/examples/album/index.html', {'server_list': S})
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = NameForm()
+        form = ServerForm()
 
-    return render(request, 'polls/name.html', {'form': form})
+    return render(request, 'servers/query.html', {'form': form})
+
+
+def initial_add(request):
+    form = AddServerForm()
+    context = {'form': form}
+    return render(request, 'servers/add.html', context)
+
+
+def add_servers(request):
+    if request.method == 'POST':
+        form = AddServerForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            game = form.cleaned_data['game']
+            players_online = form.cleaned_data['players_online']
+            location = form.cleaned_data['location']
+            IP = form.cleaned_data['IP']
+            map = form.cleaned_data['map']
+            online =  form.cleaned_data['online']
+
+            s = Server(name=name,game=game,rank=-1,players_online=players_online,location=location,IP=IP,map=map,isAlive=online)
+            s.save()
+        else:
+            S=Server.objects.filter(game=game,location=location)
+            # redirect to a new URL:
+        return HttpResponse('<h1>Server added to the database :)</h1>' )
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = AddServerForm()
+
+    return HttpResponse('<h1>Error!</h1>' )
