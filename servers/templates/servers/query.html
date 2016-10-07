@@ -44,7 +44,7 @@
     </div>
 
       <div class="container">
-        <form action="/servers/success/" method="post">
+        <form action="{% url 'servers:retrieve' %}" method="post">
           <legend>Input (Database Query)</legend>
           <br><br>
           {% csrf_token %}

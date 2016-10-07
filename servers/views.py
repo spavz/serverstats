@@ -40,6 +40,10 @@ def vote(request, question_id):
 
 """
 
+def homepage(request):
+    return render(request, 'servers/homepage.html')
+
+
 
 def initial_query(request):
     form = ServerForm()
@@ -70,7 +74,7 @@ def get_servers(request):
             else:
                 S=Server.objects.filter(game=game,location=location)
             # redirect to a new URL:
-            return render(request, 'servers/docs/examples/album/index.html', {'server_list': S})
+            return render(request, 'servers/retrieve.html', {'server_list': S})
 
     # if a GET (or any other method) we'll create a blank form
     else:
