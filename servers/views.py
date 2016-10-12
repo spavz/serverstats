@@ -63,17 +63,18 @@ def get_servers(request):
         form = ServerForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            # process the data in form.cleaned_data as required
+            # processs the data in form.cleaned_data as required
             name = form.cleaned_data['name']
             game = form.cleaned_data['game']
             location = form.cleaned_data['location']
             IP = form.cleaned_data['IP']
 
-            if(name=="" and game == "0" and location == "0" and IP =="" ):
-                S=Server.objects.all()
-            else:
-                S=Server.objects.filter(game=game,location=location)
-            # redirect to a new URL:
+
+            name = '%' + name + '%'
+            IP = '%' + IP + '%'
+
+            S=Server.objects.raw("select * from servers_Server where name like %s and game in {0} and location in {1} and IP like %s".format(game,location),[name,IP] )
+            # rdirect to a new URL:
             return render(request, 'servers/retrieve.html', {'server_list': S})
 
     # if a GET (or any other method) we'll create a blank form

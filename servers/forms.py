@@ -3,10 +3,10 @@ from django import forms
 class ServerForm(forms.Form):
     name = forms.CharField(label='Server Name',max_length=100, required=False,widget=forms.TextInput(attrs={'placeholder': 'Regex'}))
 
-    GAMES = (('0','All'),('Counter-Strike 1.6', 'Counter-Strike 1.6'),('Call of Duty®: Black Ops III', 'Call of Duty®: Black Ops III'),)
+    GAMES = (('(select game from servers_Server)','All'),("('Counter-Strike 1.6')", 'Counter-Strike 1.6'),("('Call of Duty®: Black Ops III')", 'Call of Duty®: Black Ops III'),)
     game = forms.ChoiceField(label='Game',choices=GAMES)
 
-    LOCATIONS = (('0','All'),('India', 'India'),('USA', 'USA'),)
+    LOCATIONS = (('(select location from servers_Server)','All'),("('India')", 'India'),("('USA')", 'USA'),)
     location = forms.ChoiceField(label='Location',choices=LOCATIONS)
 
     IP = forms.CharField(label='IP',max_length=30, required=False, widget=forms.TextInput(attrs={'placeholder': 'IP:port'}))
