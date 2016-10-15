@@ -4,12 +4,11 @@ body {
   /* Show it's not fixed to the top */
   min-height: 75rem;
   font: 22px 'Open Sans';
-   padding-top: 6rem;
+  padding-top: 6rem;
 }
 .custom__addon {
     color: #fff;
     border: none;
-    font-size: 22px;
     border-radius: 2px;
     text-transform: uppercase;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -17,7 +16,9 @@ body {
 .blue__addon {
     background-color: #337ab7;
 }
-
+.red__addon {
+    background-color: #B73333;
+}
 .green__addon {
     background-color: #33B757;
 }
