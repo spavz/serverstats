@@ -3,6 +3,7 @@
 body {
   /* Show it's not fixed to the top */
   min-height: 75rem;
+  font: 22px 'Open Sans';
    padding-top: 6rem;
 }
 .custom__addon {
