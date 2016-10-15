@@ -14,7 +14,10 @@ app_name = 'servers'
 ]
 """
 urlpatterns = [
+    url(r'^$', homepage, name='homepage'),
+    url(r'^add/$', initial_add, name='add'),
+    url(r'^add/success/$', add_servers, name='added'),
     url(r'^query/$', initial_query, name='query'),
-    url(r'^success/$', get_question, name='success'),
+    url(r'^retrieve/$', get_servers, name='retrieve'),
     url(r'^thanks/$', thanks, name='thanks'),
 ]

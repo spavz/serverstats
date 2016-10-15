@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
+{% load bootstrap %}
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -12,10 +14,10 @@
     <title>Fixed top navbar example for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://rawgit.com/spavz/serverstats/master/servers/templates/servers/docs/examples/navbar-top-fixed/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{% static 'navbar-top-fixed.css' %}" rel="stylesheet">
+    <link href="https://rawgit.com/spavz/serverstats/master/servers/templates/servers/docs/examples/navbar-top-fixed/navbar-top-fixed.css" rel="stylesheet">
   </head>
 
   <body>
@@ -42,15 +44,37 @@
       </div>
     </div>
 
-    <div class="container">
-
 	  <div class="row">
         <div class="col-md-6">
     		<h3>Input (Database query)</h3>
             <hr />
+            {% csrf_token %}
+
+            <div class="form-group">
+              {{ form.name.errors }}
+              <label for="{{ form.name.id_for_label }}">Server name</label>
+              {{ form.name }}
+            </div>
+            <br>            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="form-group">
+                        <hr />
+                        <label for="{{ form.locations.id_for_label }}">Location</label>
+                        {{ form.locations }}
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+
+
             <div class="input-group">
               <span class="input-group-addon custom__addon blue__addon">
-                <span class="glyphicon glyphicon-cog"></span>  Choices
+                <span class="glyphicon glyphicon-cog"></span>  Select Game
               </span>
               <select class="form-control custom__select">
                 <option value="global">GLobal</option>
@@ -58,7 +82,9 @@
                 <option value="month">This Month</option>
                 <option value="year">This Year</option>
             </select>
+
             </div>
+
             <hr />
             <div class="input-group">
               <span class="input-group-addon custom__addon red__addon">
@@ -72,18 +98,16 @@
             </select>
             </div>
             <hr />
+
             <div class="input-group">
               <span class="input-group-addon custom__addon green__addon">
                 <span class="glyphicon glyphicon-cog"></span>  Choices
               </span>
-              <select class="form-control custom__select">
-                <option value="global">GLobal</option>
-                <option value="week">This Week</option>
-                <option value="month">This Month</option>
-                <option value="year">This Year</option>
-            </select>
+              <label for="{{ form.locations.id_for_label }}">Location</label>
+              {{ form.locations }}
             </div>
             <hr />
+
             <div class="input-group">
               <span class="input-group-addon custom__addon yellow__addon">
                 <span class="glyphicon glyphicon-cog"></span>  Choices
@@ -96,6 +120,7 @@
             </select>
             </div>
             <hr />
+
             <div class="input-group">
               <span class="input-group-addon custom__addon purple__addon">
                 <span class="glyphicon glyphicon-cog"></span>  Choices
@@ -108,8 +133,16 @@
             </select>
             </div>
             <hr />
+
         </div>
-	</div>
+        <form role="form">
+    <legend>Form Title</legend>
+    {% csrf_token %}
+    {{ form|bootstrap }}
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
 </div>
 
 
@@ -121,6 +154,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="{% static '/ie10-viewport-bug-workaround.js' %}"></script>
+    <script src="https://rawgit.com/spavz/serverstats/master/servers/templates/servers/docs/examples/navbar-top-fixed/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>
