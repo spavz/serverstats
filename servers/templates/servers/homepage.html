@@ -20,17 +20,12 @@
   <body>
 
     <nav class="navbar navbar-static-top navbar-light bg-faded">
-      <a href="#" class="navbar-brand">Game Servers</a>
+      <a href={% url 'servers:homepage' %} class="navbar-brand">Game Servers</a>
       <ul class="nav navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href={% url 'servers:homepage' %}>Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Servers online</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
+      
       </ul>
     </nav>
 
@@ -98,20 +93,20 @@
         <div class="col-lg-4">
           <img class="img-circle" src="http://vignette2.wikia.nocookie.net/assassinscreed/images/e/ee/AssassinLogo.png/revision/latest?cb=20101211024122" alt="Generic placeholder image" width="140" height="140">
           <h2>Assassin's Creed</h2>
-          <p>:P</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <p></p>
+          <p><a class="btn btn-secondary" href="http://assassinscreed.ubi.com/en-gb/home/" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="https://i.ytimg.com/vi/TtqK18XpWxw/maxresdefault.jpg" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="http://crohasit.com/wp-content/uploads/2015/10/call-of-duty-black-ops-2.png" alt="Generic placeholder image" width="140" height="140">
           <h2>Call of Duty</h2>
-          <p>lol :)</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <p></p>
+          <p><a class="btn btn-secondary" href="https://www.callofduty.com/" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="https://www.digiseller.ru/preview/538261/p1_2072806_70d0358b.jpg" alt="Generic placeholder image" width="140" height="140">
+          <img class="img-circle" src="http://orig04.deviantart.net/97bc/f/2012/013/a/7/counter_strike_global_offensive___icon_by_darhymes-d4m7o98.png" alt="Generic placeholder image" width="140" height="140">
           <h2>Counter Strike: Global Offensive</h2>
-          <p>Wohooo! </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          <p></p>
+          <p><a class="btn btn-secondary" href="http://store.steampowered.com/app/730/" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
 
@@ -122,7 +117,7 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">ER Diagram goes here <span class="text-muted">Simple</span></h2>
+          <h2 class="featurette-heading">ER Diagram <span class="text-muted">Simple</span></h2>
           <p class="lead">Database accesskey</p>
         </div>
         <div class="col-md-5">
@@ -161,7 +156,7 @@
       <!-- FOOTER -->
       <footer>
         <p class="pull-xs-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2016 &middot;</p>
+
       </footer>
 
     </div><!-- /.container -->

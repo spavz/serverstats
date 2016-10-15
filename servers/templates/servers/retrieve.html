@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="#">
 
-    <title>Album example for Bootstrap</title>
+    <title>List of Servers</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://rawgit.com/spavz/serverstats/master/servers/templates/servers/docs/examples/navbar-top-fixed/bootstrap.min.css" rel="stylesheet">
@@ -23,14 +23,12 @@
       <div class="container-fluid">
         <div class="about">
           <h4>About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          <p class="text-muted">Database project</p>
         </div>
         <div class="social">
           <h4>Contact</h4>
           <ul class="list-unstyled">
-            <li><a href="#">Follow on Twitter</a></li>
-            <li><a href="#">Like on Facebook</a></li>
-            <li><a href="#">Email me</a></li>
+            <li><a href="mailto:vishak1100@gmail.com">Email me</a></li>
           </ul>
         </div>
       </div>
@@ -40,17 +38,17 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header">
           &#9776;
         </button>
-        <a href="#" class="navbar-brand">Album</a>
+        <a href="#" class="navbar-brand">More</a>
       </div>
     </div>
 
     <section class="jumbotron text-xs-center">
       <div class="container">
         <h1 class="jumbotron-heading">List of Servers</h1>
-        <p class="lead text-muted">Servers data from the database. </p>
+        <p class="lead text-muted">Servers data from the database </p>
         <p>
-          <a href="#" class="btn btn-primary">Main call to action</a>
-          <a href="#" class="btn btn-secondary">Secondary action</a>
+          <a href={% url 'servers:query' %} class="btn btn-primary">Re-enter query</a>
+          <a href={% url 'servers:add' %} class="btn btn-secondary">Add a Server</a>
         </p>
       </div>
     </section>
@@ -65,6 +63,7 @@
             <thead>
               <tr>
                 <th>#</th>
+                <th>Rank</th>
                 <th>Server</th>
                 <th>Game</th>
                 <th>Players Online</th>
@@ -75,7 +74,8 @@
 
                 {% for server in server_list %}
                   <tr>
-                    <th scope="row">{{ server.rank	}}</th>
+                    <th scope="row">{{ forloop.counter	}}</th>
+                    <td>{{ server.rank	}}</td>
                     <td><a href="#">{{ server.name }}</a></td>
                     <td>{{ server.game }}</td>
                     <td>{{ server.players_online }}</td>
@@ -99,9 +99,7 @@
       <div class="container">
         <p class="pull-xs-right">
           <a href="#">Back to top</a>
-        </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+
       </div>
     </footer>
 

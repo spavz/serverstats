@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Fixed top navbar example for Bootstrap</title>
+    <title>Add</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://rawgit.com/spavz/serverstats/master/servers/templates/servers/docs/examples/navbar-top-fixed/bootstrap.min.css" rel="stylesheet">
@@ -37,19 +37,24 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h1>Server query</h1>
-        <p class="lead">Click Help if you're new to gaming.</p>
-        <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">Help</a>
+        <h1>Add Server to the database</h1>
+        <br>
+        <p class="lead">Primary key is generated automatically.</p>
+        <p class="lead">Rank is awarded later. Default = -1.</p>
+        <p class="lead"> These fields are table attributes, hence all fields are necessary.</p>
+
+
+
       </div>
     </div>
 
       <div class="container">
         <form action={% url 'servers:added' %} method="post">
-          <legend>Input (Database Query)</legend>
           <br><br>
           {% csrf_token %}
           {% for field in form %}
           {{ field|bootstrap }}
+          <br>
           {% endfor %}
           <div class="form-group">
             <button type="submit" class="btn btn-primary">Submit</button>

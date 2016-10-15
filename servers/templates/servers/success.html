@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="#">
 
-    <title>SQL query </title>
+    <title>Success</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://rawgit.com/spavz/serverstats/master/servers/templates/servers/docs/examples/navbar-top-fixed/bootstrap.min.css" rel="stylesheet">
@@ -37,26 +37,17 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h1>Server query</h1>
-        <p class="lead">       </p>
-        <p class="lead">Fields are optional</p>
+        <div class="alert alert-success" role="alert">
+          <p>
+              Server successfully added to the database!
+          </p>
+        </div>
+        <div class="alert alert-info" role="alert">
+          <a href={% url 'servers:add' %} class="alert-link">Add another Server</a>
+        </div>
       </div>
     </div>
 
-      <div class="container">
-        <form action="{% url 'servers:retrieve' %}" method="post">
-          <legend>Input (Database Query)</legend>
-          <br><br>
-          {% csrf_token %}
-          {% for field in form %}
-          {{ field|bootstrap }}
-          {% endfor %}
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-      </form>
-
-      </div>
 
 
 </div>

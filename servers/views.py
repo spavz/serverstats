@@ -6,39 +6,6 @@ from django.views import generic
 from .models import Server
 from .forms import ServerForm, AddServerForm
 
-"""
-class IndexView(generic.ListView):
-    template_name = 'polls/index.html'
-    context_object_name = 'latest_question_list'
-
-    def get_queryset(self):
-        return Question.objects.order_by('-pub_date')[:5]
-
-
-class DetailView(generic.DetailView):
-    model = Question
-    template_name = 'polls/detail.html'
-
-
-def vote(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
-    except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(request, 'polls/detail.html', {
-            'question': question,
-            'error_message': "You didn't select a choice.",
-        })
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
-
-"""
 
 def homepage(request):
     return render(request, 'servers/homepage.html')
@@ -73,7 +40,7 @@ def get_servers(request):
             name = '%' + name + '%'
             IP = '%' + IP + '%'
 
-            S=Server.objects.raw("select * from servers_Server where name like %s and game in {0} and location in {1} and IP like %s".format(game,location),[name,IP] )
+            S=Server.objects.raw("select * from servers_Server where name like %s and game in {0} and location in {1} and IP like %s order by rank".format(game,location),[name,IP] )
             # rdirect to a new URL:
             return render(request, 'servers/retrieve.html', {'server_list': S})
 
@@ -107,10 +74,10 @@ def add_servers(request):
         else:
             S=Server.objects.filter(game=game,location=location)
             # redirect to a new URL:
-        return HttpResponse('<h1>Server added to the database :)</h1>' )
+        return render(request, 'servers/success.html')
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = AddServerForm()
 
-    return HttpResponse('<h1>Error!</h1>' )
+    return HttpResponse('<h1>Error from function add_servers</h1>' )
